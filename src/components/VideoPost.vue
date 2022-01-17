@@ -1,6 +1,6 @@
 <template>
 <div class="main-post">
-  <img class="main-video" style="width: 360px;height: 200px;" @mouseleave="stopVideo" @mouseover="playVieo"  :src="HoverVideo">
+  <img class="main-video" style="width: 360px;height: 200px;" @click="goToVideo" @mouseleave="stopVideo" @mouseover="playVieo"  :src="HoverVideo">
   <div class="video-footer">
     <div class="video-footer-head">
       <img class="owner-image" :src="product.ownerImage" />
@@ -13,10 +13,11 @@
       <span class="owner-name">{{product.ownerName}}</span>
       <div class="video-info">
         <span class="view-count">{{product.viewCount}} B görüntülenme </span>
-        <span style="font-size: 14px">&#183;</span>
+        <span style="font-size: 14px;font-weight: bolder">&#183;</span>
         <span class="publish-date">{{product.publishDateInMonth}} gün önce</span>
       </div>
     </div>
+
   </div>
 </div>
 </template>
@@ -32,8 +33,10 @@ export default {
 
   },
   methods:{
+    goToVideo(){
+      this.$router.push({ path: 'watch', query: { id:this.product.id }})
+    },
     playVieo(){
-
       this.hoverVideo=this.product.hoverImage;
     },
 
@@ -76,7 +79,7 @@ export default {
 }
 .video-footer{
   display: flex;
-  gap: 5px;
+  gap: 10px;
   flex-direction:  row;
 }
 .video-info{
@@ -96,10 +99,11 @@ export default {
 {
   font-size: 12px;
   color :rgb(170, 170, 170);
-
 }
+
 .owner-image{
   width: 36px;
   height: 36px;
+  border-radius: 15px;
 }
 </style>

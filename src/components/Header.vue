@@ -16,7 +16,7 @@ export default {
   methods:{
     gotoFavorite(){
       if(this.$route.name=="Products"){
-        this.$router.push("/favorite/1");
+        this.$router.push({ name: 'Favorites', params: { userId: '1' } });
       }
       else{
         this.$router.push("/")
@@ -38,5 +38,6 @@ export default {
 #header-content{
   display: flex;
   justify-content: right;
+  padding: 15px 50px;
 }
 </style>
