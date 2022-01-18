@@ -15,7 +15,7 @@ export default {
   },
   methods:{
     gotoFavorite(){
-      if(this.$route.name=="Products"){
+      if(this.$route.name=="Videos"){
         this.$router.push({ name: 'Favorites', params: { userId: '1' } });
       }
       else{
@@ -24,11 +24,11 @@ export default {
     }
   },
   mounted() {
-    if(this.$route.name=="Products"){
+    if(this.$route.name=="Videos"){
       this.backState="Favorites";
     }
     else{
-      this.backState="Products";
+      this.backState="Back to Videos";
     }
   }
 }

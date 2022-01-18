@@ -4,14 +4,14 @@
     <Header/>
     <LoadingSpinner v-if="!IsLoaded"/>
     <div id="favori-list">
-      <Favorite  v-for="item in favoriteProduct" :key="item.id" :product="item"  />
+      <Favorite  v-for="item in favoriteVideos" :key="item.id" :video="item"  />
     </div>
   </div>
 </template>
 
 <script>
 import Header from "../components/Header";
-import API from "../api";
+import { mapState } from 'vuex'
 import Favorite from "../components/Favorite";
 import LoadingSpinner from "../components/LoadingSpinner";
 
@@ -24,24 +24,19 @@ export default {
   },
   data(){
     return{
-      ProductList:[],
-      isLoaded:false
     };
   },
   computed:
     {
-    favoriteProduct()
+    favoriteVideos()
     {
-      return this.ProductList.filter(element=>element.favorite);
+      return this.VideoList.filter(element=>element.favorite);
     },
-    IsLoaded(){
-      return this.isLoaded;
-    }
+    ...mapState({
+      VideoList:'VideoList',
+      IsLoaded:'IsLoaded'
+    })
   },
-  async mounted() {
-    this.ProductList=await API.getProductList();
-    this.isLoaded=true;
-  }
 
 }
 </script>
