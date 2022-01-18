@@ -18,7 +18,7 @@ export class API{
         }
         return `${this.url}${path}`
     }
-    async getProductList() {
+    async getVideoList() {
         console.log(this.url)
         return axios.get(this.withPath("/videos")).
         then(r=>r.data)

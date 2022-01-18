@@ -20,7 +20,7 @@ const store = new Vuex.Store({
     },
     actions:{
         async VideoList({commit}){
-            commit("setVideoList",await API.getProductList())
+            commit("setVideoList",await API.getVideoList())
             commit("setIsLoaded",true)
         }
     }
