@@ -5,7 +5,7 @@
 
   <LoadingSpinner v-if="!IsLoaded"/>
   <div id="post-list">
-    <Product  v-for="item in ProductList" :key="item.id" :product="item"  />
+    <VideoPost  v-for="item in VideoList" :key="item.id" :video="item"  />
   </div>
 </div>
 </template>
@@ -13,20 +13,20 @@
 <script>
 import Header from "../components/Header";
 import API from "../api";
-import Product from "../components/VideoPost";
+import VideoPost from "../components/VideoPost";
 import LoadingSpinner from "../components/LoadingSpinner";
 
 
 export default {
-  name: "ProductListPage",
+  name: "VideoListPage",
   components:{
     LoadingSpinner,
-    Product,
+    VideoPost,
     Header
   },
   data(){
     return{
-      ProductList:[],
+      VideoList:[],
       isLoaded:false
     };
   },
@@ -36,7 +36,7 @@ export default {
     }
   },
   async mounted() {
-    this.ProductList=await API.getProductList();
+    this.VideoList=await API.getVideoList();
     this.isLoaded=true;
   }
 }

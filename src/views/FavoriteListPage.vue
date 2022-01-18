@@ -4,7 +4,7 @@
     <Header/>
     <LoadingSpinner v-if="!IsLoaded"/>
     <div id="favori-list">
-      <Favorite  v-for="item in favoriteProduct" :key="item.id" :product="item"  />
+      <Favorite  v-for="item in favoriteVideo" :key="item.id" :video="item"  />
     </div>
   </div>
 </template>
@@ -24,22 +24,22 @@ export default {
   },
   data(){
     return{
-      ProductList:[],
+      VideoList:[],
       isLoaded:false
     };
   },
   computed:
     {
-    favoriteProduct()
+    favoriteVideo()
     {
-      return this.ProductList.filter(element=>element.favorite);
+      return this.VideoList.filter(element=>element.favorite);
     },
     IsLoaded(){
       return this.isLoaded;
     }
   },
   async mounted() {
-    this.ProductList=await API.getProductList();
+    this.VideoList=await API.getVideoList();
     this.isLoaded=true;
   }
 

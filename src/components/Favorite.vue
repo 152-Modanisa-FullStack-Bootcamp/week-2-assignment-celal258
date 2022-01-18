@@ -3,19 +3,19 @@
     <img class="main-video" @click="goToVideo" @mouseleave="stopVideo" @mouseover="playVieo"  :src="HoverVideo"/>
     <div class="video-right">
       <div class="video-detail">
-        <span class="video-name">{{product.title}}</span>
+        <span class="video-name">{{video.title}}</span>
         <div class="video-info">
-          <span class="view-count">{{product.viewCount}} B görüntüleme</span>
+          <span class="view-count">{{video.viewCount}} B görüntüleme</span>
           <span style="font-size: 14px;font-weight: bolder"> &#183; </span>
-          <span class="publish-date">{{product.publishDateInMonth}} hafta önce</span>
+          <span class="publish-date">{{video.publishDateInMonth}} hafta önce</span>
         </div>
       </div>
       <div class="owner-info">
-        <img class="owner-image" :src="product.ownerImage"  />
-        <span>{{product.ownerName}}</span>
+        <img class="owner-image" :src="video.ownerImage"  />
+        <span>{{video.ownerName}}</span>
       </div>
 
-      <span class="description">{{product.description.substring(0, 70) + "..."}}</span>
+      <span class="description">{{video.description.substring(0, 70) + "..."}}</span>
     </div>
   </div>
 </template>
@@ -23,7 +23,7 @@
 <script>
 export default {
   name: "Favorite",
-  props:["product"],
+  props:["video"],
   data(){
     return{
       hoverVideo:""
@@ -31,14 +31,14 @@ export default {
   },
   methods:{
     goToVideo(){
-      this.$router.push({ path: 'watch', query: { id:this.product.id }})
+      this.$router.push({ path: 'watch', query: { id:this.video.id }})
     },
     playVieo(){
-      this.hoverVideo=this.product.hoverImage;
+      this.hoverVideo=this.video.hoverImage;
     },
 
     stopVideo(){
-      this.hoverVideo=this.product.coverImage;
+      this.hoverVideo=this.video.coverImage;
     }
   },
   computed:{
@@ -47,7 +47,7 @@ export default {
     }
   },
   mounted() {
-    this.hoverVideo=this.product.coverImage;
+    this.hoverVideo=this.video.coverImage;
   }
 }
 </script>
